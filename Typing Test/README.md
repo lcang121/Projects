@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## This project is in Development Mode!
 
-Instructions to run both the server & react app:
+Instructions on how to run both the server & react app:
 
 1. install all node dependencies by executing `npm install` on both Backend and FrontEnd folders
 2. Start the server first by executing `npm start` on Backend folder.
