@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Modal } from 'react-bootstrap';
 
 const MAX_CHARACTER = 15;
-const MIN_CHARACTER = 2;
+const MIN_CHARACTER = 1;
 
 const Victory = (props) => {
     const [inputStr, setInputStr] = React.useState("");
@@ -18,18 +18,19 @@ const Victory = (props) => {
         setInputStr(e.target.value)
     }
 
-    var SubmitName = (e) => {
+    var SubmitName = async (e) => {
+        e.preventDefault()
         if (isLess) {
             alert(`Your name must consist between ${MIN_CHARACTER} to ${MAX_CHARACTER} characters!`)
-            e.preventDefault();
         }
         else {
-            axios.put(`http://localhost:4000/highScore/${props.getLowestScore._id}`, {
+            await axios.put(`http://localhost:4000/highScore/${props.getLowestScore._id}`, {
                 first_name: inputStr,
                 wpm: props.wpm,
             })
                 .then(function (response) {
                     console.log(response);
+                    window.location.reload();
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -39,8 +40,8 @@ const Victory = (props) => {
 
     return (
         <>
-            <Modal centered show={props.getIsTopScore}>
-                <Modal.Header closeButton>
+            <Modal centered show={props.getIsTopScore} backdrop="static">
+                <Modal.Header>
                     <Modal.Title className="text-center">Congratulations! You made it to Leaderboard!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
