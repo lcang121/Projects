@@ -78,7 +78,6 @@ class TypingTest extends Component {
 
     compareText = () => {
         var textToCompare = this.state.quote.substring(0, this.state.userInput.length);
-
         if ((this.state.quote === this.state.userInput) && (this.timerRunning)) {
             if (this.calculateWPM() > this.props.getLowestScore.wpm) {
                 // set state that will activate victory screen.
@@ -104,7 +103,9 @@ class TypingTest extends Component {
     }
 
     handleChange = (e) => {
-        this.setState({ userInput: e.target.value })
+        this.setState({ userInput: e.target.value }, () => {  //ccomparetext will be immediately called after first input
+            this.compareText();
+        })
     }
 
     reset = () => {
@@ -133,7 +134,7 @@ class TypingTest extends Component {
 
     render() {
         return (<>
-            <section className="test-area" onKeyPress={this.start} onKeyUp={this.compareText} >
+            <section className="test-area" onInput={this.start}>
                 <blockquote className="blockquote" id="origin-text">
                     <p className="mb-0">{this.state.quote}</p>
                     <footer className="blockquote-footer">

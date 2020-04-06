@@ -6,8 +6,8 @@ const HighScore = (props) => {
     const [sortedHS, setSortedHS] = useState([]);
 
     useEffect(() => {
-        const url = 'http://localhost:4000/highScore';
-        axios.get(url).then((Response) => {          //send get request to server
+        const url = '/portfolio/typingtest/highScore';
+        axios.get(url).then((Response) => {
             setHighScores(Response.data)
         })
             .catch((error) => {

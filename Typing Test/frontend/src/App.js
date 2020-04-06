@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const url = 'http://localhost:4000/quotes';
+    const url = '/portfolio/typingtest/quotes';
     this.setState({
       promiseIsResolved: false
     })
@@ -89,7 +89,7 @@ class App extends React.Component {
                       The front end was designed using Bootstrap and relies heavily on React States and Hooks for DOM manipulation, input validations and the capturing of user inputs.
                       </div>
                     <div className="modal-body text-left">
-                      The quotes are being fed(GET) through Rest API from the backend Node/Express server. Same goes with highscores except for the additional updating of data(PUT) handling on the server side. Both are stored on MongoDB Atlas cloud database.
+                      The quotes are being fed using GET request through Rest API from the backend Node/Express server. Same goes with highscores except for the additional updating of data(PUT) handling on the server side. Both are stored on MongoDB Atlas cloud database.
                     </div>
                     <div className="modal-body text-left">
                       Please report bugs to lcang121@gmail.com

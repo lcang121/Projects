@@ -18,13 +18,13 @@ const Victory = (props) => {
         setInputStr(e.target.value)
     }
 
-    var SubmitName = async (e) => {
+    var SubmitName = (e) => {
         e.preventDefault()
         if (isLess) {
             alert(`Your name must consist between ${MIN_CHARACTER} to ${MAX_CHARACTER} characters!`)
         }
         else {
-            await axios.put(`http://localhost:4000/highScore/${props.getLowestScore._id}`, {
+            axios.put(`/portfolio/typingtest/highScore/${props.getLowestScore._id}`, {
                 first_name: inputStr,
                 wpm: props.wpm,
             })
